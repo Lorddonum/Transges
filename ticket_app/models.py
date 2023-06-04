@@ -21,14 +21,14 @@ class Ticket(models.Model):
         (3, '3rd Class'),
     )
     transport_type = models.CharField(max_length=10, choices=TRANSPORT_TYPE_CHOICES, verbose_name="Transport Type")
-    start_date = models.DateTimeField(default=timezone.now, verbose_name="Start Date")
+    start_time = models.DateTimeField(default=timezone.now, verbose_name="Start Time")
     start_city = models.CharField(max_length=12, choices=START_CITY_CHOICES, verbose_name="Start City")
     destination_city = models.CharField(max_length=12, choices=START_CITY_CHOICES, verbose_name="Destination City")
     arrival_time = models.DateTimeField(verbose_name="Arrival Time")
     comfort_level = models.PositiveSmallIntegerField(choices=COMFORT_LEVEL_CHOICES, verbose_name="Comfort Level")
 
     def save(self, *args, **kwargs):
-        self.arrival_time = self.start_date + timedelta(hours=2)
+        self.arrival_time = self.start_time + timedelta(hours=2)
         super(Ticket, self).save(*args, **kwargs)
 
     def __str__(self):

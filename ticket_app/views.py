@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm, TicketForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -8,6 +9,23 @@ def ticket(request):
         form = TicketForm(request.POST)
         if form.is_valid():
             form.save()
+            if request.user.is_authenticated:
+                # Prepare email
+                subject = 'Ticket booked.'
+                message = f"""Ticket booked.
+                Transport type: {ticket.transport_type}
+                Start time: {ticket.start_time}
+                Arrival time: {ticket.arrival_time}
+                Start city: {ticket.start_city}
+                Destination city: {ticket.destination_city}
+                Comfort level: {ticket.comfort_level}
+                Thank you for choosing Transges!"""
+
+                recipient = request.user.email
+
+                # Send email
+                send_mail(subject, message, from_email=None, recipient_list=[recipient])
+            
             return redirect('confirmation') 
     else:
         form = TicketForm()

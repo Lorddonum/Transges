@@ -117,12 +117,12 @@
            
             <form class="mt-5" action="{% url 'confirmation' %}" method="POST">
                 {% csrf_token %}
-                <p>{{ form.transport_type.errors }}{{ form.transport_type.label_tag }} {{ form.transport_type }}</p>
-                <p>{{ form.start_city.errors }} {{ form.start_city }}</p>
-                <p>{{ form.destination_city.errors }} {{ form.destination_city }}</p>
-                <p>{{ form.comfort_level.errors }} {{ form.comfort_level }}</p>
-                <button type="submit" id="confirm-btn" class="btn btn-primary" style="display:none;">Confirm</button>
-            </form>
+                <p>{{ form.transport_type.errors }}{{ form.transport_type.label_tag }}<br>{{ form.transport_type }}</p>
+                <p>{{ form.start_city.errors }}{{ form.start_city.label_tag }}<br>{{ form.start_city }}</p>
+                <p>{{ form.destination_city.errors }}{{ form.destination_city.label_tag }}<br>{{ form.destination_city }}</p>
+                <p>{{ form.comfort_level.errors }}{{ form.comfort_level.label_tag }}<br>{{ form.comfort_level }}</p>
+                <button type="submit" id="confirm-btn" class="btn btn-primary">Confirm</button>
+            </form>            
         </div>
         <footer>
             <p>&copy; Copyright Title - Aya</p>
@@ -139,57 +139,6 @@
             </div>
         </footer>
     </div>
-    <script>
-        $(document).ready(function() {
-            function hideElements(elementIds) {
-                elementIds.forEach(function (elementId) {
-                    document.getElementById(elementId).closest('p').style.display = "none";
-                });
-            }
-            
-            function showElement(elementId) {
-                document.getElementById(elementId).closest('p').style.display = "block";
-            }
-            
-            document.getElementById("id_transport_type").addEventListener("change", function () {
-                if (this.value) {
-                    showElement("id_start_city");
-                } else {
-                    hideElements(["id_start_city", "id_destination_city", "id_comfort_level", "confirm-btn"]);
-                }
-            });
-            
-            document.getElementById("id_start_city").addEventListener("change", function () {
-                if (this.value) {
-                    showElement("id_destination_city");
-                } else {
-                    hideElements(["id_destination_city", "id_comfort_level", "confirm-btn"]);
-                }
-            });
-            
-            document.getElementById("id_destination_city").addEventListener("change", function () {
-                if (this.value) {
-                    showElement("id_comfort_level");
-                } else {
-                    hideElements(["id_comfort_level", "confirm-btn"]);
-                }
-            });
-            
-            document.getElementById("id_comfort_level").addEventListener("change", function () {
-                if (this.value) {
-                    document.getElementById("confirm-btn").style.display = "block";
-                } else {
-                    document.getElementById("confirm-btn").style.display = "none";
-                }
-            });
-            
-            const firstField = document.getElementById("id_transport_type");
-            firstField.focus();
-            
-            // Hide form elements initially
-            hideElements(["id_start_city","id_destination_city", "id_comfort_level", "confirm-btn"]);
-        });
-        
-    </script>
+    
 </body>
 </html>

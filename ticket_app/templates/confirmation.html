@@ -105,7 +105,7 @@
             countdownDisplay.textContent = countdown;
 
             if (countdown === 0) {
-                window.location.href = 'index.html';
+                window.location.href = '{% url 'index' %}';
             } else {
                 setTimeout(updateCountdown, 1000);
             }

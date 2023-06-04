@@ -23,8 +23,8 @@ class TicketForm(forms.ModelForm):
             'comfort_level',
         ]
         widgets = {
-            'transport_type': forms.Select(attrs={'class': 'form-control', 'id': 'id_transport_type'}),
-            'start_city': forms.Select(attrs={'class': 'form-control', 'id': 'id_start_city', 'placeholder': 'Start city'}),
-            'destination_city': forms.Select(attrs={'class': 'form-control', 'id': 'id_destination_city', 'placeholder': 'Destination city'}),
-            'comfort_level': forms.Select(attrs={'class': 'form-control', 'id': 'id_comfort_level', 'placeholder': 'Comfort level'}),
+            'transport_type': forms.Select(attrs={'class': 'form-control', 'name': 'transport_type', 'id': 'id_transport_type'}),
+            'start_city': forms.Select(attrs={'class': 'form-control', 'name': 'start_city', 'id': 'id_start_city', 'placeholder': 'Start city'}),
+            'destination_city': forms.Select(attrs={'class': 'form-control', 'name': 'destination_city', 'id': 'id_destination_city', 'placeholder': 'Destination city'}),
+            'comfort_level': forms.Select(attrs={'class': 'form-control', 'name': 'comfort_level', 'id': 'id_comfort_level', 'placeholder': 'Comfort level'}),
         }
