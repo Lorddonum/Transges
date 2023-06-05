@@ -103,22 +103,12 @@
         function updateCountdown() {
           countdown--;
           countdownDisplay.textContent = countdown;
-
-<<<<<<< HEAD
-            if (countdown === 0) {
-                window.location.href = "{% url 'index' %}";
-            } else {
-                setTimeout(updateCountdown, 1000);
-            }
-=======
           if (countdown === 0) {
             window.location.href = "{% url 'index' %}";
           } else {
             setTimeout(updateCountdown, 1000);
           }
->>>>>>> refs/remotes/origin/main
         }
-
         setTimeout(updateCountdown, 1000);
       }
     </script>

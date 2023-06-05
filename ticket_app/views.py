@@ -4,6 +4,7 @@ from .forms import CustomUserCreationForm, TicketForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 def ticket(request):
     if request.method == 'POST':
@@ -57,3 +58,9 @@ def index(request):
 
 def confirmation(request):
     return render(request, 'confirmation.html')
+
+@login_required
+def user(request):
+    user = request.user
+    context = {'user': user}
+    return render(request, 'user.html', context)

@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link 
-      rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-      crossorigin="anonymous" 
-      referrerpolicy="no-referrer" 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
 
     <!-- BOOTSTRAP -->
@@ -38,105 +38,123 @@
       crossorigin="anonymous"
     ></script>
     <!-- END BOOTSTRAP -->
-
+    {% load static %}
     <style>
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
-  
+
+      .form-container {
+        display: inline-block;
+        max-width: 400px;
+        background-color: #f0f0f0;
+        mix-blend-mode: difference;
+        border-radius: 10px;
+        padding:20px;
+        padding-top:0;
+      }
+
+      .form-wrapper{
+        max-height: 50%;
+        margin-top: 25px;
+      }
+
       .green-header {
-        background-color: #28a745;
+        background-color: #f0f0f0;
+        mix-blend-mode: difference;
         height: 100px;
-        margin: 0%;
-        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .green-header h1 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
+        font-family: 'Roboto', sans-serif;
+        color: black;
+        margin: 0;
+      }
+
+      .title-rectangle {
+        display: inline-block;
+        padding: 10px;
+        background-color: #007bff;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        padding: 0px 10px;
       }
 
       footer {
-        background-color: #28a745;
+        background-color: #f0f0f0;
+        mix-blend-mode: difference;
         height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding: 0 20px;
       }
 
       footer p {
-          margin:0;
-          color: white;
-      }
-      
-      .page-wrapper {
-          display: flex;
-          flex-direction: column;
-          min-height: 100%;
-      }
-
-      .container{
-          flex: 1;
+        margin: 0;
+        color: #007bff;
       }
 
       .social-icons a {
-        color: white;
+        color: black;
         margin-left: 10px;
       }
 
       .social-icons i {
         font-size: 1.5em;
       }
-      
     </style>
   </head>
-  <body>
-    <div class="page-wrapper">
-      <div class="container">
-        <div class="green-header">
-          <h1 class="text-center">Title</h1>
-        </div>
-        <form class="mt-5" method="POST">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              name="username"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Sign In</button>
-          <p class="mt-3">
-            Don't have an account? <a href="{% url 'register' %}">Register</a>
-          </p>
-        </form>
+  <body class="d-flex flex-column min-vh-100">
+    <header class="green-header">
+      <div class="title-rectangle">
+        <h1 class="text-center my-3">TRANSGES</h1>
       </div>
-      <footer>
-        <p>&copy; Copyright Title - Aya</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank">
-                <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="https://www.twitter.com" target="_blank">
+    </header>
+
+    <main class="container flex-grow-1">
+      <div class="d-flex align-items-center justify-content-center form-wrapper">
+        <div class="form-container">
+          <form class="mt-5" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            <p class="mt-3">
+              Don't have an account? <a href="{% url 'register' %}">Register</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="d-flex justify-content-between align-items-center">
+      <p>&copy; Copyright Transges - Aya</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
                 <i class="fab fa-twitter-square"></i>
             </a>
             <a href="https://www.instagram.com" target="_blank">

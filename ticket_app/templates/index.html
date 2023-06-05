@@ -68,7 +68,7 @@
 
 
         .background-image {
-            background-image: url('{% static "background.jpg" %}');
+            background-image: url('{% static "station.jpg" %}');
             background-size: cover;
             background-position: center;
             width: 1110px; 
@@ -158,7 +158,7 @@
         <div class="container">
             <div class="green-header">
                 <h1 class="text-center">Title</h1>
-                <a href="user.html">
+                <a href="{% url 'user' %}">
                     <i class="fa-sharp fa-regular fa-user"></i>
                 </a>
             </div>    
