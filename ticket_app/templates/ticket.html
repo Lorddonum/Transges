@@ -115,7 +115,7 @@
                 </a>
             </div>
            
-            <form class="mt-5" action="{% url 'confirmation' %}" method="POST">
+            <form class="mt-5" action="{% url 'ticket' %}" method="POST">
                 {% csrf_token %}
                 <p>{{ form.transport_type.errors }}{{ form.transport_type.label_tag }}<br>{{ form.transport_type }}</p>
                 <p>{{ form.start_city.errors }}{{ form.start_city.label_tag }}<br>{{ form.start_city }}</p>

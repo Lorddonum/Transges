@@ -3,12 +3,13 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm, TicketForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
+from django.conf import settings
 
 def ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
-            form.save()
+            ticket=form.save()
             if request.user.is_authenticated:
                 # Prepare email
                 subject = 'Ticket booked.'
@@ -24,8 +25,7 @@ def ticket(request):
                 recipient = request.user.email
 
                 # Send email
-                send_mail(subject, message, from_email=None, recipient_list=[recipient])
-            
+                send_mail(subject, message, from_email=settings.DEFAULT_FROM_EMAIL, recipient_list=[recipient])
             return redirect('confirmation') 
     else:
         form = TicketForm()
