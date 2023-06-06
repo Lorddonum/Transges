@@ -52,6 +52,9 @@
             position: absolute;
             top: 10%;
             left: 10%;
+            background-color: rgba(0, 0, 0, 0.5); /* Add the semi-transparent background */
+            padding: 15px; /* Add some padding around the text */
+            border-radius: 15px;
         }
         
         .text-content h3 {
@@ -107,7 +110,11 @@
         .user-icon i {
             font-size: 1.5em;
         }
-        
+
+        .highlight-text {
+            color: #28a745;  /* green color, same as Bootstrap's .btn-success */
+            font-size: 1.4em;  /* increase the font size */
+        }        
     </style>
 </head>
 <body class="d-flex flex-column vh-100">
@@ -141,7 +148,7 @@
                     <div class="text-box">
                         <div class="text-content">
                             <h3 class="text-white">Welcome To Transges</h3>
-                            <p class="text-white">Fastest routes, Safest transport</p>
+                            <p class="highlight-text">Fastest routes, Safest transport</p>
                         </div>
                     </div>
                     <div class="button-container">
