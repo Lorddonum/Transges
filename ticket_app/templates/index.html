@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Transges</title>
     <link 
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
-        rel="stylesheet"
-    />
+        rel="stylesheet"/>
     <script 
         src="https://kit.fontawesome.com/125e5e97c9.js" 
         crossorigin="anonymous">
     </script>
+
     <!-- BOOTSTRAP -->
     <link
       rel="stylesheet"
@@ -37,157 +37,134 @@
     <!-- END BOOTSTRAP -->
     {% load static %}
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .green-header {
-            background-color: #28a745;
-            height: 100px;
-            position: relative;
-        }
-
-        .green-header h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-        }
-
-        .fa-user {
-            font-size: 2em;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            color: white; /* Change the icon color to white */
-        }
-
-
         .background-image {
-            background-image: url('{% static "station.jpg" %}');
+            background: url("{% static 'station.jpg' %}") no-repeat center center;
             background-size: cover;
-            background-position: center;
-            width: 1110px; 
-            height: 500px; 
-            margin: 0 auto; /* Center the container horizontally */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            border-bottom-left-radius: 20px; 
-            border-bottom-right-radius: 20px;
+            width: 100%;
+            height: 500px;
+            max-width: 1110px;
+            border-radius: 20px;
             position: relative;
+            margin: 0 auto;
         }
+        
+        .text-content {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+        
+        .text-content h3 {
+            font-size: 3em; /* Increase the font size */
+            color: #fff;
+        }        
 
-        .background-image .overlay {
+        .hidden-content {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .button-container .btn {
+            display: inline-block;
+            width: 200px;
+            font-size: 1.5em;   
+        }
+        
+        .background-image::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border-bottom-left-radius: 20px; 
-            border-bottom-right-radius: 20px;
-            background-color: rgba(0, 0, 0, 0); /* Transparent background initially */
-            transition: background-color 0.3s ease-in-out; /* Add a transition effect */
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 20px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .background-image:hover::before {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .background-image:hover .hidden-content {
+            display: block;
         }
 
-        .background-image h2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0; 
-            transition: opacity 0.3s ease-in-out; /* Add a transition effect */
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
+        .btn-dark:hover {
+            background-color: #28a745 !important;  /* the color code for .btn-success in Bootstrap */
+            border-color: #28a745 !important;
         }
-
-        .background-image:hover .overlay{
-            background-color: rgba(0, 0, 0, 0.5); /* Dim the background on hover */
-        }
-
-        .background-image:hover h2 {
-            opacity: 1; 
-        }
-
-        .buttons-container {
-            margin-top: 20px; 
-        }
-
-        footer {
-            background-color: #28a745;
-            height: 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        footer p {
-            margin:0;
-            color: white;
-        }
-
-        .page-wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
-        }
-
-        .container{
-            flex: 1;
-        }
-
-        .social-icons a {
-            color: white;
-            margin-left: 10px;
-        }
-
-        .social-icons i {
+        
+        .user-icon i {
             font-size: 1.5em;
         }
+        
     </style>
 </head>
-<body>
-    <div class="page-wrapper">
+<body class="d-flex flex-column vh-100">
+    <header class="bg-dark bg-success text-white text-center py-3 mb-4">
         <div class="container">
-            <div class="green-header">
-                <h1 class="text-center">Title</h1>
-                <a href="{% url 'user' %}">
-                    <i class="fa-sharp fa-regular fa-user"></i>
-                </a>
-            </div>    
-            <div class="background-image">
-                <div class="overlay"></div>
-                <h2 class="text-center text-light mb-5">Trains and autocars all over Morocco</h2>
-            </div>
-            <div class="d-flex justify-content-around buttons-container">
-                <form action="{% url 'ticket' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-primary btn-lg">Book a ticket</button>
-                </form>
-                <button type="button" class="btn btn-primary btn-lg">Follow someone's trajectory</button>
+            <div class="row align-items-center">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h1>Transges</h1>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <a href="{% url 'user' %}" class="user-icon text-white d-flex flex-column align-items-center">
+                        <i class="fas fa-user"></i>
+                        <span class="user-email">
+                            {% if user.is_authenticated %}
+                                {{ user.email }}
+                            {% else %}
+                                Not logged in
+                            {% endif %}
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
-        <footer>
-            <p>&copy; Copyright Title - Aya</p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com" target="_blank">
-                    <i class="fab fa-facebook-square"></i>
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <i class="fab fa-twitter-square"></i>
-                </a>
-                <a href="https://www.instagram.com" target="_blank">
-                    <i class="fab fa-instagram-square"></i>
-                </a>
-            </div>
-        </footer>
-    </div>
+    </header>    
+        
+    <main class="container flex-grow-1">
+        <div class="d-flex justify-content-center mt-4">
+            <div class="background-image d-flex align-items-center justify-content-center">
+                <div class="hidden-content">
+                    <div class="text-box">
+                        <div class="text-content">
+                            <h3 class="text-white">Welcome To Transges</h3>
+                            <p class="text-white">Fastest routes, Safest transport</p>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a href="{% url 'ticket' %}" class="btn btn-dark">Book a Ticket</a>
+                    </div>
+                </div>    
+            </div>            
+        </div>        
+    </main>
+
+    <footer class="bg-success bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; Copyright Transges - Aya</p>
+        <div class="mt-2">
+          <a href="https://www.facebook.com" target="_blank" class="text-white mx-2">
+            <i class="fab fa-facebook-square"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" class="text-white mx-2">
+            <i class="fab fa-twitter-square"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" class="text-white mx-2">
+            <i class="fab fa-instagram-square"></i>
+          </a>
+        </div>
+      </footer>
 </body>
 </html>

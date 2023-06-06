@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser,Ticket
+from .models import CustomUser, Ticket
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -11,6 +11,8 @@ class CustomUserCreationForm(UserCreationForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'first_name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'last_name'}),
             'cin': forms.TextInput(attrs={'class': 'form-control', 'id': 'cin'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'id': 'password1', 'style': 'padding-right: 40px;'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'id': 'password2', 'style': 'padding-right: 40px;'})
         }
 
 class TicketForm(forms.ModelForm):

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Transges</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -22,6 +22,22 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+        
+      .form-container {
+        background-color: #ffffff; 
+        padding: 20px; 
+        border-radius: 10px; 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+      }
+    </style>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -39,62 +55,6 @@
     ></script>
     <!-- END BOOTSTRAP -->
 
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      .green-header {
-        background-color: #28a745;
-        height: 100px;
-        margin: 0%;
-        position: relative;
-      }
-
-      .green-header h1 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-      }
-
-      footer {
-        background-color: #28a745;
-        height: 50px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-      }
-
-      footer p {
-        margin: 0;
-        color: white;
-      }
-
-      .page-wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-      }
-
-      .container {
-        flex: 1;
-      }
-
-      .social-icons a {
-        color: white;
-        margin-left: 10px;
-      }
-
-      .social-icons i {
-        font-size: 1.5em;
-      }
-    </style>
     <script>
       function redirectToIndex() {
         var countdown = 3;
@@ -113,32 +73,34 @@
       }
     </script>
   </head>
-  <body onload="redirectToIndex()">
-    <div class="page-wrapper">
-      <div class="container">
-        <div class="green-header">
-          <h1 class="text-center">Title</h1>
-        </div>
-        <div class="mt-5 text-center">
+  <body class="d-flex flex-column h-100" onload="redirectToIndex()">
+    <header class="bg-dark bg-primary text-white text-center py-3 mb-4">
+      <h1>Transges</h1>
+    </header>
+
+    <main class="container flex-grow-1 mb-4 d-flex align-items-center justify-content-center">
+      <div class="w-50">
+        <div class="form-container mt-5 text-center">
           <h2>Ticket booked.</h2>
           <p>We've sent you an email.</p>
           <p>Redirecting in <span id="countdown">3</span> seconds...</p>
         </div>
       </div>
-      <footer>
-        <p>&copy; Copyright Title - Aya</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook-square"></i>
-          </a>
-          <a href="https://www.twitter.com" target="_blank">
-            <i class="fab fa-twitter-square"></i>
-          </a>
-          <a href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram-square"></i>
-          </a>
-        </div>
-      </footer>
-    </div>
+    </main>
+
+    <footer class="bg-success bg-dark text-white text-center py-3 mt-auto">
+      <p class="mb-0">&copy; Copyright Title - Aya</p>
+      <div class="mt-2">
+        <a href="https://www.facebook.com" target="_blank" class="text-white mx-2">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" class="text-white mx-2">
+          <i class="fab fa-twitter-square"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="text-white mx-2">
+          <i class="fab fa-instagram-square"></i>
+        </a>
+      </div>
+    </footer>
   </body>
 </html>

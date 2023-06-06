@@ -134,13 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Setting up email system
 
-
-EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'khatbane.atae@gmail.com'
 EMAIL_HOST_PASSWORD = '@Alpha321-'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-MAILGUN_DOMAIN = 'https://api.mailgun.net/v3/sandbox1f68bb8fe1bf49e2934d2dcd449233e8.mailgun.org'
-MAILGUN_API_KEY = '2381726034e60a77a0f0f62a31f0035e-5d9bd83c-c4d52b35'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
